@@ -1,0 +1,25 @@
+<div>
+  <% if session[:turn] == 'player_1' %>
+    <h1>Let's play battleship, <%= session[:name] %>!</h1>
+    <p>Player Own</p>
+    <pre><%= $game.own_board_view($game.player_1) %></pre>
+    <p>Player Opponent</p>
+    <pre><%= $game.opponent_board_view($game.player_1) %></pre>
+  <% else %>
+    <h1>Let's play battleship, <%= session[:name2] %>!</h1>
+    <p>Player Own</p>
+    <pre><%= $game.own_board_view($game.player_2) %></pre>
+    <p>Player Opponent</p>
+    <pre><%= $game.opponent_board_view($game.player_2) %></pre>
+  <% end %>
+  <% if @coordinate.nil? %>
+    <form action="multi_gameplay", method="post">
+      <input type="text" name="coordinate">
+      <input type="submit" value="Fire">
+    </form>
+  <% else %>
+    <form action="switch", method="get">
+      <input type="submit" value="Opponent's turn">
+    </form>
+  <% end %>
+</div>

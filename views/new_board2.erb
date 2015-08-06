@@ -1,6 +1,6 @@
 <div>
-  <h1>Let's place your battleships, <%= session[:name] %>!</h1>
-  <pre><%= $game.own_board_view($game.player_1) %></pre>
+  <h1>Let's place your battleships, <%= session[:name2] %>!</h1>
+  <pre><%= $game.own_board_view($game.player_2) %></pre>
   <form method="post">
     <input type="text", name="coordinate">
     <select name='ship'>
@@ -19,13 +19,7 @@
     <br>
     <input type="submit" value="Place Ship">
   </form>
-  <% if session[:mode] == 'multiplayer' %>
-    <form action="/new_board2" method="get">
-      <input type="submit" value="Opponent's turn">
-    </form>
-  <% else %>
-    <form action="/gameplay", method="get">
-      <input type="submit" value="Start Game">
-    </form>
-  <% end %>
+  <form action="/multi_gameplay", method="get">
+    <input type="submit" value="Start Game">
+  </form>
 </div>

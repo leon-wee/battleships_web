@@ -1,8 +1,8 @@
 <div>
   <h1>Let's play battleship, <%= session[:name] %>!</h1>
-  <p>Player 1 Own</p>
+  <p>Player Own</p>
   <pre><%= $game.own_board_view($game.player_1) %></pre>
-  <p>Player 1 Opponent</p>
+  <p>Player Opponent</p>
   <pre><%= $game.opponent_board_view($game.player_1) %></pre>
   <form action="gameplay", method="post">
     <input type="text" name="coordinate">
