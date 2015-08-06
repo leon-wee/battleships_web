@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
-    battleships (0.1.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -56,7 +55,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  battleships
   capybara
   launchy
   rspec
