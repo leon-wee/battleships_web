@@ -57,6 +57,18 @@ module Battleships
       end
     end
 
+    describe 'random_shoot' do
+      it ' sends the random shot to the board' do
+        expect(board).to receive(:receive_random_shot)
+        subject.receive_random_shot
+      end
+
+      it 'can take a random shot at the opponent' do
+        expect(opponent).to receive(:receive_random_shot)
+        subject.random_shoot
+      end
+    end
+
     describe 'receive_shot' do
       it 'fails if there is no board' do
         subject.board = nil

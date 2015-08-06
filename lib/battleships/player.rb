@@ -14,14 +14,22 @@ module Battleships
       board.place_random_horizontal_ship
     end
 
+    def shoot coordinates
+      fail 'Player has no opponent' unless opponent
+      opponent.receive_shot coordinates
+    end
+
     def receive_shot coordinates
       fail 'Player has no board' unless board
       board.receive_shot coordinates
     end
 
-    def shoot coordinates
-      fail 'Player has no opponent' unless opponent
-      opponent.receive_shot coordinates
+    def random_shoot
+      opponent.receive_random_shot
+    end
+
+    def receive_random_shot
+      board.receive_random_shot
     end
 
     def winner?

@@ -139,4 +139,31 @@ feature 'Starting a new game' do
   ------------
    ABCDEFGHIJ')
   end
+
+  scenario 'Computer randomly fires back at the player' do
+    visit '/new_board'
+    fill_in('coordinate', with: 'A1')
+    select('Destroyer', from: 'ship')
+    choose('Vertically')
+    click_button('Place Ship')
+    click_button('Start Game')
+    fill_in('coordinate', with: 'A1')
+    allow($game.player_2).to receive(:random_shoot) { $game.player_2.shoot(:A3) }
+    click_button('Fire')
+    expect(page).to have_content(
+    'ABCDEFGHIJ
+  ------------
+ 1|D         |1
+ 2|D         |2
+ 3|-         |3
+ 4|          |4
+ 5|          |5
+ 6|          |6
+ 7|          |7
+ 8|          |8
+ 9|          |9
+10|          |10
+  ------------
+   ABCDEFGHIJ')
+  end
 end

@@ -68,6 +68,11 @@ module Battleships
       end
     end
 
+    def receive_random_shot
+      coordinate = (random_generator.random_letter + random_generator.random_all_number.to_s).to_sym
+      receive_shot(coordinate)
+    end
+
     def [] coordinate
       coord_handler.validate coordinate
       grid[coordinate]

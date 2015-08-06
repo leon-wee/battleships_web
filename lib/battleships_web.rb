@@ -41,6 +41,7 @@ class BattleshipWeb < Sinatra::Base
   post '/gameplay' do
     @coordinate = params[:coordinate]
     $game.player_1.shoot(@coordinate.to_sym) unless @coordinate.nil?
+    $game.player_2.random_shoot
     erb :gameplay
   end
 

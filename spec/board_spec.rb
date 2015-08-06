@@ -116,6 +116,26 @@ module Battleships
       end
     end
 
+    describe 'receive_random_shot' do
+      it 'responds to receive_random_shot' do
+        expect(subject).to respond_to(:receive_random_shot)
+      end
+
+      it 'receives receive_shot when called' do
+        expect(subject).to receive(:receive_shot)
+        subject.receive_random_shot
+      end
+
+      it 'receives a shot at a random coordinate' do
+        ran_gen = double :ran_gen
+        allow(subject).to receive(:random_generator) { ran_gen }
+        allow(ran_gen).to receive(:random_all_number) { 1 }
+        allow(ran_gen).to receive(:random_letter) { 'A' }
+        expect(subject).to receive(:receive_shot).with(:A1)
+        subject.receive_random_shot
+      end
+    end
+
     describe 'receive_shot' do
       it 'fails if coordinate is invalid' do
         invalid_coords.each do |coord|
