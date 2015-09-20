@@ -16,14 +16,6 @@ module Battleships
       board.place_ship ship, coordinates, orientation
     end
 
-    # def place_random_vertical_ship
-    #   board.place_random_vertical_ship
-    # end
-
-    # def place_random_horizontal_ship
-    #   board.place_random_horizontal_ship
-    # end
-
     def shoot coordinates
       fail 'Player has no opponent' unless opponent
       opponent.receive_shot coordinates

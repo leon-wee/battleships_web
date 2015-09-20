@@ -57,7 +57,6 @@ class BattleshipWeb < Sinatra::Base
 
   get '/gameplay' do
     $game.player_2.place_random_ships
-    # $game.player_2.place_random_horizontal_ship
     erb :gameplay
   end
 
