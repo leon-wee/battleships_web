@@ -10,6 +10,7 @@ module Battleships
           retry
         end
       end
+      "Successfully placed 5 random ships"
     end
 
     def place_ship ship, coordinates, orientation = :horizontally

@@ -4,6 +4,7 @@ module Battleships
   describe Player do
     let(:board) { instance_double Board }
     let(:opponent) { instance_double Player }
+    let(:ship) { double :ship }
 
     before(:each) do
       subject.board = board
@@ -93,6 +94,13 @@ module Battleships
         subject.board = nil
         expect{subject.all_ships_sunk?}.to raise_error 'Player has no board'
       end
+    end
+
+    it 'places ships randomly' do
+      allow(subject.board).to receive(:ships) { [ship, ship, ship, ship, ship] }
+      allow(subject.board.ships).to receive(:length) { 5 }
+      allow(subject.board).to receive(:randomly_place_ships)
+      expect(subject.place_random_ships).to eq "Successfully placed 5 random ships"
     end
   end
 end
