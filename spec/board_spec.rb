@@ -18,17 +18,17 @@ module Battleships
       end
     end
 
-    # describe 'place_random_ship' do
-    #   it 'can place a random vertical ship' do
-    #     expect(subject).to receive(:place_ship)
-    #     subject.place_random_vertical_ship
-    #   end
-
-    #   it 'can place a random horizontal ship' do
-    #     expect(subject).to receive(:place_ship)
-    #     subject.place_random_vertical_ship
-    #   end
-    # end
+    context 'placing ships randomly' do
+      it 'places ships randomly' do
+        random_generator = double :random_generator
+        allow(subject).to receive(:random_generator) { random_generator }
+        allow(random_generator).to receive(:get_random_ship) { 'submarine' }
+        allow(random_generator).to receive(:get_random_coordinates) { :A2 }
+        allow(random_generator).to receive(:get_random_direction) { :Vertically }
+        expect(subject).to receive(:place_ship)
+        subject.randomly_place_ships
+      end
+    end
 
     describe 'place_ship' do
       let(:ship) { double :ship, size: 1 }

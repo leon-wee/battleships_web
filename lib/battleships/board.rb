@@ -32,20 +32,6 @@ module Battleships
       place_ship(Ship.new(ship), coordinate, direction)
     end
 
-    # def place_random_vertical_ship
-    #   ship = random_generator.random_ship
-    #   letter = random_generator.random_letter
-    #   coord = (letter + '1').to_sym
-    #   place_ship(Ship.new(ship), coord, :vertically)
-    # end
-
-    # def place_random_horizontal_ship
-    #   ship = random_generator.random_ship
-    #   number = random_generator.random_number
-    #   coord = ('E' + number.to_s).to_sym
-    #   place_ship(Ship.new(ship), coord, :horizontally)
-    # end
-
     def width
       SIZE
     end

@@ -31,16 +31,6 @@ module Battleships
       subject.place_ship ship, :A1, :vertically
     end
 
-    # it 'can place a random vertical ship on the board' do
-    #   expect(board).to receive(:place_random_vertical_ship)
-    #   subject.place_random_vertical_ship
-    # end
-
-    # it 'can place a random horizontal ship on the board' do
-    #   expect(board).to receive(:place_random_horizontal_ship)
-    #   subject.place_random_horizontal_ship
-    # end
-
     it 'knows about the opponent' do
       expect(subject.opponent).to be opponent
     end
