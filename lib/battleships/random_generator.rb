@@ -13,7 +13,7 @@ class RandomGenerator
     (letters.sample + numbers.sample.to_s).to_sym
   end
 
-  def get_random_directions
+  def get_random_direction
     directions.sample
   end
 
