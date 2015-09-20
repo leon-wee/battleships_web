@@ -2,6 +2,16 @@ module Battleships
   class Player
     attr_accessor :board, :opponent, :name
 
+    def place_random_ships
+      until board.ships.length == 5
+        begin
+          board.randomly_place_ships
+        rescue StandardError
+          retry
+        end
+      end
+    end
+
     def place_ship ship, coordinates, orientation = :horizontally
       board.place_ship ship, coordinates, orientation
     end

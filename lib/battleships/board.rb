@@ -2,14 +2,17 @@ require_relative 'cell'
 require_relative 'coordinate_handler'
 require_relative 'random_generator'
 require_relative 'ship'
+require_relative 'computer_player'
 
 module Battleships
   class Board
     SIZE = 10
 
+    attr_reader :computer
     attr_accessor :width, :random_generator
 
     def initialize
+      @computer = ComputerPlayer.new
       @grid = {}
       @coord_handler = CoordinateHandler.new
       @random_generator = RandomGenerator.new
@@ -22,6 +25,13 @@ module Battleships
 
       coords.each { |coord| grid[coord].content = ship }
       @ships << ship
+    end
+
+    def randomly_place_ships
+      ship = computer.get_random_ship
+      coordinate = computer.get_random_coordinates
+      direction = computer.get_random_directions
+      place_ship(Ship.new(ship), coordinate, direction)
     end
 
     def place_random_vertical_ship
