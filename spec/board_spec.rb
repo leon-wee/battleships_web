@@ -18,17 +18,17 @@ module Battleships
       end
     end
 
-    describe 'place_random_ship' do
-      it 'can place a random vertical ship' do
-        expect(subject).to receive(:place_ship)
-        subject.place_random_vertical_ship
-      end
+    # describe 'place_random_ship' do
+    #   it 'can place a random vertical ship' do
+    #     expect(subject).to receive(:place_ship)
+    #     subject.place_random_vertical_ship
+    #   end
 
-      it 'can place a random horizontal ship' do
-        expect(subject).to receive(:place_ship)
-        subject.place_random_vertical_ship
-      end
-    end
+    #   it 'can place a random horizontal ship' do
+    #     expect(subject).to receive(:place_ship)
+    #     subject.place_random_vertical_ship
+    #   end
+    # end
 
     describe 'place_ship' do
       let(:ship) { double :ship, size: 1 }
@@ -129,9 +129,8 @@ module Battleships
       it 'receives a shot at a random coordinate' do
         ran_gen = double :ran_gen
         allow(subject).to receive(:random_generator) { ran_gen }
-        allow(ran_gen).to receive(:random_all_number) { 1 }
-        allow(ran_gen).to receive(:random_letter) { 'A' }
-        expect(subject).to receive(:receive_shot).with(:A1)
+        allow(ran_gen).to receive(:get_random_coordinates) { 'A2' }
+        expect(subject).to receive(:receive_shot).with(:A2)
         subject.receive_random_shot
       end
     end

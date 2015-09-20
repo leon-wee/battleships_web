@@ -28,25 +28,25 @@ module Battleships
     end
 
     def randomly_place_ships
-      ship = computer.get_random_ship
-      coordinate = computer.get_random_coordinates
-      direction = computer.get_random_directions
+      ship = random_generator.get_random_ship
+      coordinate = random_generator.get_random_coordinates
+      direction = random_generator.get_random_directions
       place_ship(Ship.new(ship), coordinate, direction)
     end
 
-    def place_random_vertical_ship
-      ship = random_generator.random_ship
-      letter = random_generator.random_letter
-      coord = (letter + '1').to_sym
-      place_ship(Ship.new(ship), coord, :vertically)
-    end
+    # def place_random_vertical_ship
+    #   ship = random_generator.random_ship
+    #   letter = random_generator.random_letter
+    #   coord = (letter + '1').to_sym
+    #   place_ship(Ship.new(ship), coord, :vertically)
+    # end
 
-    def place_random_horizontal_ship
-      ship = random_generator.random_ship
-      number = random_generator.random_number
-      coord = ('E' + number.to_s).to_sym
-      place_ship(Ship.new(ship), coord, :horizontally)
-    end
+    # def place_random_horizontal_ship
+    #   ship = random_generator.random_ship
+    #   number = random_generator.random_number
+    #   coord = ('E' + number.to_s).to_sym
+    #   place_ship(Ship.new(ship), coord, :horizontally)
+    # end
 
     def width
       SIZE
@@ -79,7 +79,7 @@ module Battleships
     end
 
     def receive_random_shot
-      coordinate = (random_generator.random_letter + random_generator.random_all_number.to_s).to_sym
+      coordinate = random_generator.get_random_coordinates.to_sym
       receive_shot(coordinate)
     end
 

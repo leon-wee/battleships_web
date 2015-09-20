@@ -58,31 +58,31 @@ feature 'Playing single player' do
 #    ABCDEFGHIJ')
 #     end
 
-  scenario 'Player can see the miss on the board' do
-    visit '/'
-    click_button 'Single Player'
-    fill_in('name', with: 'Adrian')
-    click_button('Submit')
-    allow($game.player_2).to receive(:place_random_vertical_ship) { $game.player_2.place_ship(Ship.submarine, :A1) }
-    click_button('Start Game')
-    fill_in('coordinate', with: 'A3')
-    click_button('Fire')
-    expect(page).to have_content(
-    'ABCDEFGHIJ
-  ------------
- 1|          |1
- 2|          |2
- 3|-         |3
- 4|          |4
- 5|          |5
- 6|          |6
- 7|          |7
- 8|          |8
- 9|          |9
-10|          |10
-  ------------
-   ABCDEFGHIJ')
-  end
+#   scenario 'Player can see the miss on the board' do
+#     visit '/'
+#     click_button 'Single Player'
+#     fill_in('name', with: 'Adrian')
+#     click_button('Submit')
+#     allow($game.player_2).to receive(:place_random_vertical_ship) { $game.player_2.place_ship(Ship.submarine, :A1) }
+#     click_button('Start Game')
+#     fill_in('coordinate', with: 'A3')
+#     click_button('Fire')
+#     expect(page).to have_content(
+#     'ABCDEFGHIJ
+#   ------------
+#  1|          |1
+#  2|          |2
+#  3|-         |3
+#  4|          |4
+#  5|          |5
+#  6|          |6
+#  7|          |7
+#  8|          |8
+#  9|          |9
+# 10|          |10
+#   ------------
+#    ABCDEFGHIJ')
+#   end
 
   scenario 'Computer randomly fires back at the player' do
     visit '/'
